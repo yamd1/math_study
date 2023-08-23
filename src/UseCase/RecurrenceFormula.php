@@ -48,4 +48,12 @@ class RecurrenceFormula
 
         return $dp;
     }
+
+    /**
+     *
+     */
+    public function dynamicPlanNapzac()
+    {
+
+    }
 }

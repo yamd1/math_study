@@ -46,4 +46,24 @@ class RecurrenceFormulaTest extends TestCase
         
         $this->assertEquals($except, $result);
     }
+
+    public static function dynamicPlanNapzacDataProvider()
+    {
+        return [
+            "case 1" => [4, 10, [[3, 10], [6, 210], [4, 130], [2, 57]], 340] 
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider dynamicPlanNapzacDataProvider
+     */
+    public function test_dynamicPlanNapzac(int $N, int $W, array $iList, int $except)
+    {
+        $instance = new RecurrenceFormula;
+        $result = $instance->dynamicPlanNapzac($N, $W, $iList);
+
+        $this->assertEquals($except, $result);
+    }
+
 }
