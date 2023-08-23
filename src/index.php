@@ -6,6 +6,6 @@ use App\UseCase\RecurrenceFormula;
 
 
 $instance = new RecurrenceFormula;
-$result = $instance->dynamicPlan(5, [8, 6, 9, 2, 1]);
+$result = $instance->dynamicPlanFrog(5, [8, 6, 9, 2, 1]);
 
 var_dump($result);

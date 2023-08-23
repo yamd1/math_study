@@ -8,7 +8,12 @@ class RecurrenceFormula
     {
     }
 
-    public function dynamicPlan(int $N, array $iList)
+    /**
+     * @param int $N 足場の数
+     * @param array<int> $iList それぞれの足場の高さ
+     * @return array<int> $dp それぞれの足場にたどり着くための最小のコスト
+     */
+    public function dynamicPlanFrog(int $N, array $iList)
     {
         $dp = [];
         for ($i = 0; $i < $N; $i ++)
@@ -23,5 +28,10 @@ class RecurrenceFormula
         }
 
         return $dp;
+    }
+
+    public function dynamicPlanStairs()
+    {
+
     }
 }
