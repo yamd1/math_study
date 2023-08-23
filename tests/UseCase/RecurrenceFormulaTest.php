@@ -9,19 +9,20 @@ class RecurrenceFormulaTest extends TestCase
     public static function dynamicPlanFrogDataProvider()
     {
         return [
-            "case 1" => [5, [8, 6, 9, 2, 1]]
+            "case 1" => [5, [8, 6, 9, 2, 1], [0, 2, 1, 6, 7]],
+            "case 2" => [6, [8, 6, 9, 2, 1, 3], [0, 2, 1, 6, 7, 7]]
+
         ];
     }
     /**
      * @test
      * @dataProvider dynamicPlanFrogDataProvider
      */
-    function test_dynamicPlanFrog(int $N, array $iList)
+    function test_dynamicPlanFrog(int $N, array $iList, array $except)
     {
 
         $instance = new RecurrenceFormula;
         $result = $instance->dynamicPlanFrog($N, $iList);
-        $except = [0, 2, 1, 6, 7];
 
         $this->assertEquals($except, $result);
     }
@@ -30,7 +31,9 @@ class RecurrenceFormulaTest extends TestCase
     public static function dynamicPlanStairsDataProvider()
     {
         return [
-            "case 1" => [6]
+            "case 1" => [6, [1, 1, 2, 3, 5, 8, 13]],
+            "case 2" => [7, [1, 1, 2, 3, 5, 8, 13, 21]],
+
         ];
     }
 
@@ -38,11 +41,10 @@ class RecurrenceFormulaTest extends TestCase
      * @test
      * @dataProvider dynamicPlanStairsDataProvider
      */
-    public function test_dynamicPlanStairs(int $N)
+    public function test_dynamicPlanStairs(int $N, array $except)
     {
         $instance = new RecurrenceFormula;
         $result = $instance->dynamicPlanStairs($N);
-        $except = [1, 1, 2, 3, 5, 8, 13];
         
         $this->assertEquals($except, $result);
     }
