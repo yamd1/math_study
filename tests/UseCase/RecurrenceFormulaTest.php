@@ -27,5 +27,24 @@ class RecurrenceFormulaTest extends TestCase
     }
 
 
+    public static function dynamicPlanStairsDataProvider()
+    {
+        return [
+            "case 1" => [6]
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider dynamicPlanStairsDataProvider
+     */
+    public function test_dynamicPlanStairs(int $N)
+    {
+        $instance = new RecurrenceFormula;
+        $result = $instance->dynamicPlanStairs($N);
+        $except = [1, 1, 2, 3, 5, 8, 13];
+        
+        $this->assertEquals($except, $result);
+    }
 
 }

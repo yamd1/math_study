@@ -30,8 +30,23 @@ class RecurrenceFormula
         return $dp;
     }
 
-    public function dynamicPlanStairs()
+    /**
+     * @param int $N 階段の数
+     * @return array<int> $dp 各段にたどり着くためのパターン数
+     */
+    public function dynamicPlanStairs(int $N)
     {
+        $dp = [];
 
+        for ($i = 0; $i <= $N; $i ++)
+        {
+            if($i <= 1) $dp[$i] = 1;
+            if($i >= 2) 
+            {
+                $dp[$i] = $dp[$i - 1] + $dp[$i - 2];
+            }
+        }
+
+        return $dp;
     }
 }
