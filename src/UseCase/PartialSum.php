@@ -5,10 +5,9 @@ namespace App\UseCase;
 class PartialSum
 {
 
-    public function dynamicPlanPartialSum(int $N, int $S, array $aList): bool
+    public function dynamicPlanPartialSum(int $N, int $S, array $aList): bool 
     {
         $dp = [];
-        $result = false;
         for ($i = 0; $i < $N; $i ++)
         {
             for ($j = 0; $j < $S; $j ++)
@@ -25,11 +24,11 @@ class PartialSum
                         $dp[$i][$j] = max($v1, $v2);
                     }
 
-                    if($dp[$i][$j] === $S) $result = true;
+                    if($dp[$i][$j] === $S) return true;
                 }
             }
         }
 
-        return $result;
+        return false;
     }
 }
