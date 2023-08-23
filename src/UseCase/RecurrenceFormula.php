@@ -37,7 +37,6 @@ class RecurrenceFormula
     public function dynamicPlanStairs(int $N)
     {
         $dp = [];
-
         for ($i = 0; $i <= $N; $i ++)
         {
             if($i <= 1) $dp[$i] = 1;

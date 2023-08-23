@@ -11,7 +11,6 @@ class RecurrenceFormulaTest extends TestCase
         return [
             "case 1" => [5, [8, 6, 9, 2, 1], [0, 2, 1, 6, 7]],
             "case 2" => [6, [8, 6, 9, 2, 1, 3], [0, 2, 1, 6, 7, 7]]
-
         ];
     }
     /**
@@ -33,7 +32,6 @@ class RecurrenceFormulaTest extends TestCase
         return [
             "case 1" => [6, [1, 1, 2, 3, 5, 8, 13]],
             "case 2" => [7, [1, 1, 2, 3, 5, 8, 13, 21]],
-
         ];
     }
 
@@ -48,5 +46,4 @@ class RecurrenceFormulaTest extends TestCase
         
         $this->assertEquals($except, $result);
     }
-
 }
