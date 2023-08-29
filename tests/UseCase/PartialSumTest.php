@@ -33,4 +33,5 @@ final class PartialSumTest extends TestCase
 
         $this->assertEquals($except, $result);
     }
+
 }

@@ -2,6 +2,8 @@
 
 namespace App\UseCase;
 
+use PhpParser\Node\Expr\AssignOp\ShiftLeft;
+
 class PartialSum
 {
 
@@ -30,5 +32,49 @@ class PartialSum
         }
 
         return false;
+    }
+
+
+    public function f(array $array)
+    {
+        // 先頭の要素を取り出す
+        $N = array_shift($array);
+        $result = [];
+
+        for ($i = 0; $i <= $N; $i ++)
+        {
+            if (count($array) == 0) return $result;
+            if (count($array) == 1)
+            {
+                $result[] = $array[0];
+                return $result;
+            } 
+            if (count($array) == 2)
+            {
+                $result[] = (int)((string)$array[0] . (string)$array[1]);
+                return $result;
+            } 
+
+            $v1 = (int)(((string)$array[0]) . ((string)$array[1]));
+            $v2 = (int)(((string)$array[1]) . ((string)$array[2]));
+
+            echo (string)$v1 . ' : ' . (string)$v2 . "\n";
+            
+            if ($v1 >= $v2)
+            {
+                $result[] = $v1;
+                array_shift($array);
+                array_shift($array);
+            } 
+            else if ($v1 < $v2)
+            {
+                $result[] = $array[0];
+                $result[] = $v2;
+                var_dump($result);
+                array_shift($array);
+                array_shift($array);
+                array_shift($array);
+            }
+        }
     }
 }
