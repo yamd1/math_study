@@ -29,4 +29,33 @@ class Step
         if($n === $nums[$center])
             return "Yes";
     }
+
+    public function A04(int $n): string
+    {
+        $result = "";
+        for ($i = 9; $i >= 0; $i --)
+        {
+            $w = 2 ** $i;
+            $result .= (string)((floor($n / $w)) % 2);
+        }
+        return $result;
+    }
+
+    public function A06(array $nums, int $startDate, int $endDate): int
+    {
+        $sumArray = array();
+        for($i=0, $len=count($nums); $i < $len; $i ++)
+        {
+            if($i === 0)
+            {
+                $sumArray[$i] = $nums[$i];
+                continue;
+            }
+                
+
+            $sumArray[$i] = $nums[$i] + $sumArray[$i - 1];
+        }
+
+        return $sumArray[$endDate-1] - $sumArray[$startDate-2];
+    }
 }
