@@ -51,11 +51,42 @@ class Step
                 $sumArray[$i] = $nums[$i];
                 continue;
             }
-                
 
             $sumArray[$i] = $nums[$i] + $sumArray[$i - 1];
         }
 
         return $sumArray[$endDate-1] - $sumArray[$startDate-2];
     }
+
+    public function A07(int $n, int $d, array $days): string
+    {
+        $dayArray = array_fill(0, $n+2, 0);
+
+        // 各参加者が参加した日に1を足す。参加者が参加した最終日から1を引く
+        for($i = 0; $i < $d; $i ++)
+        {
+            $exploded = explode(" ", $days[$i]);
+            $s = (int)$exploded[0];
+            $e = (int)$exploded[1];
+            $dayArray[$s] += 1;
+            $dayArray[$e + 1] -= 1;
+        }
+
+        $sumArray = array();
+        for ($i = 1; $i <= $n; $i ++)
+        {
+            if($i === 1)
+            {
+                $sumArray[$i] = $dayArray[$i];
+                continue;
+            }
+            $sumArray[$i] = $sumArray[$i - 1] + $dayArray[$i];
+        }
+
+        return array_reduce($sumArray, function($ax, $dx){ return (string)$ax . (string)$dx; });
+    }
+
+
 }
+
+

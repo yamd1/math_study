@@ -86,7 +86,6 @@ class StepTest extends TestCase
             "case3" => [[62, 65, 41, 13, 20, 11, 18, 44, 53, 12, 18, 17,14, 10,39], 2, 15, 375],
         ];
     }
-
     /**
      * @test
      * @dataProvider A06DataProvider
@@ -95,6 +94,25 @@ class StepTest extends TestCase
     {
         $instance = new Step;
         $result = $instance->A06($nums, $startDate, $endDate);
+        $this->assertEquals($except, $result);
+    }
+
+
+    public static function A07DataProvider()
+    {
+        return [
+            "case0" => [4, 2, ["2 3", "3 4"], "0121"],
+            "case1" => [8, 5, ["2 3", "3 6", "5 7", "3 7", "1 5"], "12434320"],
+        ];
+    }
+    /**
+     * @test
+     * @dataProvider A07DataProvider
+     */
+    public function test_A07(int $n, int $d, array $days, string $except)
+    {
+        $instance = new Step;
+        $result = $instance->A07($n, $d, $days);
         $this->assertEquals($except, $result);
     }
 }
