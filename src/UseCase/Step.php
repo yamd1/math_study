@@ -83,6 +83,7 @@ class Step
             $sumArray[$i] = $sumArray[$i - 1] + $dayArray[$i];
         }
 
+        
         return array_reduce($sumArray, function($ax, $dx){ return (string)$ax . (string)$dx; });
     }
 
