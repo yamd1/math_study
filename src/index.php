@@ -1,15 +1,21 @@
 <?php
 
-use App\UseCase\SingleNum;
+// use App\UseCase\SingleNum;
 
-require_once "vendor/autoload.php";
+// require_once "vendor/autoload.php";
 
-echo "hello\n";
-echo "uuu\n";
-echo "world\n";
+function hoge(string $val, int $numval, array $arr)
+{
+    $arr[] = "in function";
+}
+$val = "valval";
+$numval = 123;
+$arr = ["1", "2"];
 
-$instance = new SingleNum;
-$instance->run([1,2,2]);
+hoge($val, $numval, $arr);
+
+var_dump($arr);
+
 
 /* $s_time = microtime(true); */
 /* $n = 100000; */

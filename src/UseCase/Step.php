@@ -88,7 +88,57 @@ class Step
     }
 
     public function A08(int $x, int $y, array $matrix, array $sections)
-    {}
+    {
+        $arr = [];
+        for($i = 0; $i <= $x; $i ++)
+        {
+            $arr[$i] = array_fill(0, $y+1, 0);
+        }
+
+        // 行の累積和を計算する
+        for($i = 1; $i <= $x; $i ++)
+        {
+            for($j = 1; $j <= $y; $j ++)
+            {
+                if($j === 1)
+                {
+                    $arr[$i][$j] = $matrix[$i-1][$j-1];
+                    continue;
+                }
+                $arr[$i][$j] = $matrix[$i-1][$j-1] + $arr[$i][$j-1];
+            }
+        }
+
+        // 列の累積和を計算する
+        for($i = 1; $i <= $x; $i ++)
+        {
+            for($j = 1; $j <= $y; $j ++)
+            {
+                if($i === 1)
+                {
+                    continue;
+                }
+                $arr[$i][$j] += $arr[$i-1][$j];
+            }
+        }
+
+        $result = [];
+        for($i = 0, $l = count($sections); $i < $l; $i ++)
+        {
+            $result[] = 
+                ($arr[$sections[$i][0]-1][$sections[$i][1]-1] 
+                + 
+                $arr[$sections[$i][2]][$sections[$i][3]]) 
+                
+                -
+
+                ($arr[$sections[$i][0]-1][$y] 
+                + 
+                $arr[$x][$sections[$i][1]-1]);
+        }
+
+        return $result;
+    }
 }
 
 
