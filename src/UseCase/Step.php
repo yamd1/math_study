@@ -87,7 +87,8 @@ class Step
         return array_reduce($sumArray, function($ax, $dx){ return (string)$ax . (string)$dx; });
     }
 
-
+    public function A08(int $x, int $y, array $matrix, array $sections)
+    {}
 }
 
 

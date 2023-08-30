@@ -115,4 +115,34 @@ class StepTest extends TestCase
         $result = $instance->A07($n, $d, $days);
         $this->assertEquals($except, $result);
     }
+
+    public static function A08DataProvider()
+    {
+        return [
+            "case0" => [5, 5, [
+                [2, 0, 0, 5, 1],
+                [1, 0, 3, 0, 0],
+                [0, 8, 5, 0, 2],
+                [4, 1, 0, 0, 6],
+                [0, 9, 2, 7, 0]
+            ],
+            [
+                [2, 2, 4, 5], 
+                [1, 1, 5, 5]
+            ], 
+
+            [25, 56]
+            ],
+        ];
+    }
+    /**
+     * @test
+     * @dataProvider A08DataProvider
+     */
+    public function test_A08(int $x, int $y, array $matrix, array $sections, array $excepts)
+    {
+        $instance = new Step;
+        $result = $instance->A08($x, $y, $matrix, $sections);
+        $this->assertEquals($excepts, $result);
+    }
 }
